@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,7 +7,12 @@
     scroll-behavior: smooth;
     list-style: none;
 }
-header{
+
+body {
+    background-color: white; /* Set background to white */
+}
+
+header {
     position: fixed;
     top: 1rem;
     left: 50%;
@@ -23,26 +28,30 @@ header{
     border-radius: 3rem;
     z-index: 1000;
 }
-.logo{
+
+.logo {
     color: white;
     font-size: 1.3rem;
     font-weight: 600;
-    text-wrap: nowrap;
     transition: 0.3s ease-in-out;
 }
-.logo:hover{
-    transform: scale(1.1); 
+
+.logo:hover {
+    transform: scale(1.1);
 }
-.nav-links{
+
+.nav-links {
     display: flex;
     gap: 2rem;
 }
+
 li a {
     position: relative;
     color: white;
     font-weight: 300;
     transition: color 0.3s ease-in-out;
 }
+
 li a::before {
     position: absolute;
     content: '';
@@ -52,15 +61,18 @@ li a::before {
     top: 25px;
     border-radius: 1rem;
     background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
-    transition: width 0.3s ease-in-out; /* Přidání přechodu pro šířku */
+    transition: width 0.3s ease-in-out;
 }
-li a:hover::before{
+
+li a:hover::before {
     width: 100%;
 }
+
 li a:hover {
-    color: rgb(0, 157, 255); 
+    color: rgb(0, 157, 255);
 }
-.visit-btn{
+
+.visit-btn {
     padding: 0.8rem 1.5rem;
     border-radius: 3rem;
     border: none;
@@ -68,40 +80,46 @@ li a:hover {
     font-size: 1rem;
     color: white;
     cursor: pointer;
-    text-wrap: nowrap;
-    transition: O.3s ease-in-out;
+    transition: 0.3s ease-in-out;
     background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
 }
-.visit-btn:hover{
-    background: linear-gradient(to right, rgb(255, 0, 255),  rgb(0, 157, 255));
+
+.visit-btn:hover {
+    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
     transform: scale(1.03);
 }
-#menu-icon{
+
+#menu-icon {
     font-size: 2rem;
     display: none;
 }
-section{
+
+section {
     min-height: 100vh;
-    padding: 8rem, 12%;
+    padding: 8rem 12%;
     width: 100%;
     position: relative;
 }
-.about{
+
+.about {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.about .about-container{
+
+.about .about-container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10rem;
 }
-.about img{
+
+.about img {
     width: 20vw;
     border-radius: 50%;
 }
-.info-box{
+
+.info-box {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -109,47 +127,79 @@ section{
     justify-content: center;
     gap: 1.5rem;
 }
-.info-box h3{
+
+.info-box h3 {
     font-size: 1.8rem;
     font-weight: 500;
     opacity: 0.8;
 }
-.info-box h1{
+
+.info-box h1 {
     font-size: 4rem;
     font-weight: 600;
 }
-.info-box span{
-  background: linear-gradient(to right, rgb(255, 0, 255),  rgb(0, 157, 255)); ;
-   background-clip: text;
-   color: transparent;
-   font-size: 2rem;
+
+.info-box span {
+    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+    background-clip: text;
+    color: transparent;
+    font-size: 2rem;
 }
-.btn-group{
+
+.btn-group {
     display: flex;
     gap: 1rem;
 }
-.btn{
+
+.btn {
     border-radius: 3rem;
     padding: 0.5rem 1.5rem;
     border: 2px solid black;
     cursor: pointer;
     font-weight: 500;
-    text-wrap: nowrap;
     transition: 0.2s ease-in-out;
 }
-.btn:hover{
+
+.btn:hover {
     background-color: black;
     color: white;
 }
-.socials{
+
+.socials {
     display: flex;
     gap: 2rem;
 }
-.socials i{
+
+.socials i {
     font-size: 2.5rem;
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
-.socials i:hover{
+
+.socials i:hover {
     transform: scale(1.1);
+}
+
+.horizontal-scroll {
+    height: 100vh;
+    background-color: white; /* Set background color to white */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.horizontal-content {
+    display: flex;
+    gap: 50px; /* Increased gap between images */
+    align-items: center;
+}
+
+.box {
+    width: 600px;
+    height: 400px; /* Adjusted height for proper visibility */
+    object-fit: contain; /* Ensures images are fully visible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
