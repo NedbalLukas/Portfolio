@@ -182,7 +182,7 @@ section {
 
 .horizontal-scroll {
     height: 100vh;
-    background-color: white; /* Set background color to white */
+    background-color: white; 
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -191,15 +191,21 @@ section {
 
 .horizontal-content {
     display: flex;
-    gap: 50px; /* Increased gap between images */
+    gap: 50px; 
     align-items: center;
 }
 
 .box {
     width: 600px;
-    height: 400px; /* Adjusted height for proper visibility */
-    object-fit: contain; /* Ensures images are fully visible */
+    height: 400px; 
+    object-fit: contain; 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#animated-name span {
+    color: black;  
+    font-size: 4rem;  
+    font-weight: 600;  
 }
