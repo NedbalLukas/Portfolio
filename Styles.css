@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Arial, Helvetica, sans-serif, bold;
     text-decoration: none;
     scroll-behavior: smooth;
     list-style: none;
@@ -16,7 +16,7 @@ header{
     align-items: center;
     justify-content: center;
     gap: 5rem;
-    background-color: black;
+    background-color: rgb(0, 0, 0, 0.9);
     backdrop-filter: blur(8px);
     color: white;
     padding: 0.5rem 1.5rem;
@@ -51,15 +51,13 @@ li a::before {
     height: 5px;
     top: 25px;
     border-radius: 1rem;
-    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
-    transition: width 0.3s ease-in-out; /* Přidání přechodu pro šířku */
+    background: #00382D;
+    transition: width 0.3s ease-in-out; 
 }
 li a:hover::before{
     width: 100%;
 }
-li a:hover {
-    color: rgb(0, 157, 255); 
-}
+
 .visit-btn{
     padding: 0.8rem 1.5rem;
     border-radius: 3rem;
@@ -70,10 +68,10 @@ li a:hover {
     cursor: pointer;
     text-wrap: nowrap;
     transition: O.3s ease-in-out;
-    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+    background: #00382D;
 }
 .visit-btn:hover{
-    background: linear-gradient(to right, rgb(255, 0, 255),  rgb(0, 157, 255));
+    background: #00382D;
     transform: scale(1.03);
 }
 #menu-icon{
@@ -119,7 +117,7 @@ section{
     font-weight: 600;
 }
 .info-box span{
-  background: linear-gradient(to right, rgb(255, 0, 255),  rgb(0, 157, 255)); ;
+  background: #00382D;
    background-clip: text;
    color: transparent;
    font-size: 2rem;
@@ -152,4 +150,221 @@ section{
 }
 .socials i:hover{
     transform: scale(1.1);
+}
+.section-title{
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+}
+.experience-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+.experience img{
+    width: 24vw;
+    border-radius: 3rem;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+}
+.grid-card{
+    border: 2px solid black;
+    border-radius: 3rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: left;
+    cursor: pointer;
+    transition: O.2 ease-in-out;
+    max-width: 500px;
+}
+.grid-card:hover{
+    transform: scale(1.02);
+    background-color: black;
+    color: white;
+}
+.grid-card i{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.grid-card span{
+    font-size: 1.5rem;
+    font-weight: 500;
+    background: #00382D;
+    background-clip: text;
+    color: transparent;
+}
+::-webkit-scrollbar{
+    width: 20px;
+}
+::-webkit-scrollbar-track{
+    background-color: rgb(219, 219, 219);
+}
+::-webkit-scrollbar-thumb{
+    background: #00382D;
+}
+.input-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+    margin-top: 5rem;
+}
+.input-box input{
+    position: relative;
+    border-radius: 3rem;
+    border: 2px solid black;
+    padding: 2rem 8rem;
+    font-size: 3rem;
+}
+.input-box input::placeholder{
+    font-size: 3rem;
+}
+.input{
+    position: relative;
+}
+.input i{
+    position: absolute;
+    font-size: 4rem;
+    top: 50%;
+    left: 10px;
+    transform: translate(50%, -50%);
+}
+footer{
+    bottom: 0;
+    left: 0;
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+footer ul{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+footer ul li a{
+    color: black;
+    font-weight: 600;
+}
+.copyright{
+    font-size: 300;
+    margin: 2rem;
+}
+@media(max-width:1280px){
+    header{
+        padding: 1rem 2rem;
+        gap: 2rem;
+    }
+    .about .about-container{
+        gap: 3rem;
+    }
+    .experience-info{
+        flex-direction: column;
+    }
+    .input-box input{
+        padding: 2rem 5rem;
+        font-size: 2.5rem;
+    }
+    .input input::placeholder{
+        font-size: 2.5rem;
+    }
+    .input-box i{
+        font-size: 2.5rem;
+    }
+}
+@media(max-width:768px){
+    header{
+        gap: 1rem;
+        padding: 1rem 1rem;
+    }
+    header .logo{
+        font-size: 1rem;
+    }
+    header .visit-btn{
+        display: none;
+    }
+    .about-container{
+        flex-direction: column;
+    }
+    .input-box input{
+        padding: 1rem 2rem;
+        font-size: 1.8rem;
+    }
+    .input-boxinput::placeholder{
+        font-size: 1.5rem;
+    }
+    .input-box i{
+        display: none;
+    }
+    .grid{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .experience-info img{
+        width: 70vw;
+    }
+}
+@media(max-width:700px){
+    header #menu-icon{
+        display: block;
+    
+    }
+    .nav-links{
+        position: absolute;
+        top: 100%;
+        margin: 1rem;
+        width: 100%;
+        padding: 1rem;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background: rgb(0, 0, 0, 0.9);
+        
+        border-radius: 3rem;
+        display: none;
+    }
+    .nav-links li{
+        margin-top: 1.5rem;
+        padding: 1rem;
+    }
+    .nav-links.active{
+        display: block;
+    }
+    header{
+        padding: 1rem 5rem;
+        gap: 8rem;
+    }
+    header .logo{
+        font-size: 1.5rem;
+    }
+    .about-container img{
+        width: 80vw;
+    }
+    .info-box input{
+        padding: 0.5rem 3rem;
+        width: 80%;
+        font-size: 1.5rem;
+    }
+    .input-box input::placeholder{
+        font-size: 1.5rem;
+    }
+    footer ul{
+        gap: 1rem
+    }
+}
+a{
+    color: black;
+    text-decoration: none;
 }
