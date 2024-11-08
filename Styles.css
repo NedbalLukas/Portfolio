@@ -316,7 +316,7 @@ footer ul li a {
     header {
         padding: 1rem 2rem;
         gap: 2rem;
-        width: 100%;
+        
     }
     .about .about-container {
         gap: 3rem;
@@ -337,6 +337,10 @@ footer ul li a {
         gap: 1rem;
         padding: 1rem 1rem;
         width: 100%;
+        border-radius: 0;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
     }
 
     header .logo {
@@ -348,9 +352,6 @@ footer ul li a {
     .about-container {
         flex-direction: column;
     }
-}
-
-@media (max-width: 700px) {
     #menu-icon {
         display: block;
     }
