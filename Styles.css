@@ -153,12 +153,11 @@ section {
     font-weight: 500;
     white-space: nowrap;
     transition: 0.2s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: width 0.3s ease-in-out;
 }
 
-.btn:hover {
-    background-color: black;
-    color: white;
-}
+
 
 .socials {
     display: flex;
@@ -358,11 +357,9 @@ footer ul li a {
     .nav-links {
         position: absolute;
         top: 100%;
-        margin: 3rem;
         width: 100%;
         padding: 2rem;
-        background: rgba(0, 0, 0, 0.9);
-        border-radius: 3rem;
+        background: rgba(0, 0, 0, 0.93);
         flex-direction: column;
         text-align: center;
         display: none;
@@ -380,7 +377,6 @@ footer ul li a {
         width: 70%;
     }
 }
-
 a {
     color: black;
     text-decoration: none;
