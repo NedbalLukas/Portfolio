@@ -250,14 +250,6 @@ section {
     margin-top: 5rem;
 }
 
-.input-box input {
-    position: relative;
-    border-radius: 3rem;
-    border: 2px solid black;
-    padding: 5%;
-    max-width: 500%;
-    font-size: 3rem;
-}
 
 .input-box input::placeholder {
     font-size: 3rem;
@@ -265,13 +257,16 @@ section {
 
 .input {
     position: relative;
+    padding: 2% 3%;
+    border: 2px solid black;
+    border-radius: 1rem;
+    color: #00382D;
 }
 
-.input i {
-    position: absolute;
-    font-size: 2rem;
-    top: 50%;
-    transform: translate(50%, -50%);
+.contact p{
+    font-weight: 300;
+    text-decoration: solid;
+    font-size: 1.5rem;
 }
 
 footer {
@@ -328,6 +323,7 @@ footer ul li a {
 }
 
 @media (max-width: 768px) {
+    
     .grid{
         display: flex;
         flex-wrap: wrap;
@@ -368,7 +364,7 @@ footer ul li a {
         display: block;
     }
     .header img{
-        size: 50%;
+        size: 70%;
     }
     .nav-links li{
         margin: 30px;
