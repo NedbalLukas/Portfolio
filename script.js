@@ -1,65 +1,20 @@
 const menuIcon = document.querySelector('#menu-icon');
 const navLinks = document.querySelector('.nav-links');
-
-// Přepínání menu pro mobilní zobrazení
 menuIcon.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
-
-// Funkce pro spuštění animací hlavičky
-const animateHeader = () => {
-    // Hlavička přijíždí shora
-    gsap.from("header", {
-        y: -100, // Startovní pozice hlavičky nad obrazovkou
-        opacity: 0, // Skrytí hlavičky před animací
-        duration: 1, // Doba trvání animace
-        ease: "power3.out", // Plynulý efekt
-    });
-
-    // Navigační odkazy animace
-    gsap.from(".nav-links li", {
-        opacity: 0,
-        y: -20,
-        stagger: 0.2, // Sekvenční zpoždění mezi odkazy
-        duration: 1,
-        ease: "power3.out",
-    });
-
-    // Tlačítko "Visit Github" animace
-    gsap.from(".visit-btn", {
-        opacity: 0,
-        scale: 0.8,
-        duration: 1,
-        ease: "elastic.out(1, 0.3)", // Skákací efekt
-    });
-
-    // Ikona menu animace
-    gsap.from("#menu-icon", {
-        opacity: 0,
-        scale: 0.8,
-        duration: 1,
-        ease: "back.out(1.7)", // Jemný zpětný efekt
-        delay: 0.5, // Zpoždění animace
-    });
-};
-
-// Úvodní obrazovka a animace obsahu
 document.addEventListener('DOMContentLoaded', () => {
     const introScreen = document.getElementById('intro-screen');
     const mainContent = document.getElementById('main-content');
     const greeting = document.getElementById('greeting');
     const textSplit = greeting.textContent.split('');
     greeting.textContent = '';
-
-    // Rozdělení textu do jednotlivých písmen
     textSplit.forEach((char) => {
         const span = document.createElement('span');
         span.textContent = char;
         span.style.display = 'inline-block';
         greeting.appendChild(span);
     });
-
-    // Časová osa pro animaci uvítání
     const timeline = gsap.timeline();
     timeline.fromTo(
         '#greeting span',
@@ -69,10 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
             y: 0,
             duration: 1,
             ease: "power3.out",
-            stagger: 0.1, // Sekvenční zobrazování písmen
+            stagger: 0.1, 
         }
     );
-
     timeline.to(
         '#greeting',
         {
@@ -84,8 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         '-=0.5'
     );
-
-    // Skrytí uvítací obrazovky a zobrazení hlavního obsahu
     timeline.to(introScreen, {
         opacity: 0,
         duration: 1.5,
@@ -94,8 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         onComplete: () => {
             introScreen.style.display = 'none';
             mainContent.style.display = 'block';
-
-            // Animace obsahu po uvítání
             gsap.fromTo(
                 mainContent,
                 { opacity: 0, scale: 0.95, y: 30 },
@@ -107,22 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: "power3.out",
                 }
             );
-
-            // Spuštění animace hlavičky
             animateHeader();
         },
     });
 });
-
-// Animace plakátů při scrollování
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
-
     const posters = document.querySelectorAll('.poster');
-
     posters.forEach((poster, index) => {
         if (window.innerWidth >= 768) {
-            // Na desktopu s rotačním pohybem
             gsap.fromTo(
                 poster,
                 {
@@ -146,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             );
         } else {
-            // Na menších obrazovkách
             gsap.fromTo(
                 poster,
                 {
@@ -193,8 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 document.addEventListener("DOMContentLoaded", () => {
     const contactSection = document.querySelector(".contact-fullscreen");
-
-    // Detekce zobrazení sekce
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -202,6 +142,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, { threshold: 0.3 });
-
     observer.observe(contactSection);
 });
