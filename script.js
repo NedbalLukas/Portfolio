@@ -112,26 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const links = document.querySelectorAll(".footer-link");
-    const sections = document.querySelectorAll("section");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop - 100;
-            if (scrollY >= sectionTop) {
-                current = section.getAttribute("id");
-            }
-        });
-        links.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").substring(1) === current) {
-                link.classList.add("active");
-            }
-        });
-    });
-});
 const menuicon = document.getElementById('menu-icon');
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileLinks = document.querySelectorAll('.mobile-links a');
@@ -150,15 +130,6 @@ mobileLinks.forEach(link => {
         closeMenu();
     });
 });
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            gsap.fromTo(entry.target, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 });
-            observer.unobserve(entry.target); // Stop observing once animated
-        }
-    });
-}, { threshold: 0.2 });
 sections.forEach(section => observer.observe(section));
 function openMenu() {
     menuOpen = true;
@@ -167,11 +138,6 @@ function openMenu() {
 
     menuIcon.classList.add('active');
 
-    gsap.fromTo(
-        ".mobile-links li",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.2 }
-    );
 }
 function closeMenu() {
     menuOpen = false;
@@ -183,15 +149,5 @@ function closeMenu() {
     }, 300);
 
     menuIcon.classList.remove('active');
-}
-
-function shrinkHeaderOnScroll() {
-    if (window.scrollY > 50) {
-        header.style.transform = 'translateX(-50%) scale(0.95)';
-        header.style.background = 'rgba(0, 0, 0, 0.95)';
-    } else {
-        header.style.transform = 'translateX(-50%) scale(1)';
-        header.style.background = 'rgba(0, 0, 0, 0.9)';
-    }
 }
 
