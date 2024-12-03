@@ -124,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 current = section.getAttribute("id");
             }
         });
-
         links.forEach((link) => {
             link.classList.remove("active");
             if (link.getAttribute("href").substring(1) === current) {
@@ -133,14 +132,66 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const contactSection = document.querySelector(".contact-fullscreen");
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                contactSection.classList.add("visible");
-            }
-        });
-    }, { threshold: 0.3 });
-    observer.observe(contactSection);
+const menuicon = document.getElementById('menu-icon');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileLinks = document.querySelectorAll('.mobile-links a');
+const header = document.querySelector('.header');
+const sections = document.querySelectorAll('section');
+let menuOpen = false;
+menuIcon.addEventListener('click', () => {
+    if (!menuOpen) {
+        openMenu();
+    } else {
+        closeMenu();
+    }
 });
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        closeMenu();
+    });
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            gsap.fromTo(entry.target, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 });
+            observer.unobserve(entry.target); // Stop observing once animated
+        }
+    });
+}, { threshold: 0.2 });
+sections.forEach(section => observer.observe(section));
+function openMenu() {
+    menuOpen = true;
+    mobileMenu.classList.add('open');
+    mobileMenu.style.display = 'flex';
+
+    menuIcon.classList.add('active');
+
+    gsap.fromTo(
+        ".mobile-links li",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.2 }
+    );
+}
+function closeMenu() {
+    menuOpen = false;
+
+    mobileMenu.classList.add('closing');
+    setTimeout(() => {
+        mobileMenu.classList.remove('open', 'closing');
+        mobileMenu.style.display = 'none';
+    }, 300);
+
+    menuIcon.classList.remove('active');
+}
+
+function shrinkHeaderOnScroll() {
+    if (window.scrollY > 50) {
+        header.style.transform = 'translateX(-50%) scale(0.95)';
+        header.style.background = 'rgba(0, 0, 0, 0.95)';
+    } else {
+        header.style.transform = 'translateX(-50%) scale(1)';
+        header.style.background = 'rgba(0, 0, 0, 0.9)';
+    }
+}
+

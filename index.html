@@ -13,30 +13,31 @@
     <div id="intro-screen">
         <h1 id="greeting">Vítejte</h1>
       </div>
-<header class="header">
+      <header class="header">
         <a href="#" class="logo"><span>Lukáš Nedbal</span></a>
-
-    <ul class="nav-links">   
-        <li>
-            <a href="#about">O mně</a>
-        </li>
-
-        <li>
-            <a href="#experience">Zkušenosti</a>
-        </li>
-
-        <li>
-            <a href="#posters-section">Projekty</a>
-        </li>
-
-        <li>
-            <a href="#contact">Kontakt</a>
-        </li>
-    </ul>     
-    <i class="fa-solid fa-bars" id="menu-icon"></i>
-
-    <a href="https://github.com/NedbalLukas"><button class="visit-btn">Github</button></a>
-</header>
+    
+        <ul class="nav-links">
+            <li><a href="#about">O mně</a></li>
+            <li><a href="#experience">Zkušenosti</a></li>
+            <li><a href="#posters-section">Projekty</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <a href="https://github.com/NedbalLukas" class="desktop-only">
+            <button class="visit-btn">Github</button>
+        </a>
+    </header>
+    
+    <div class="overlay" id="mobile-menu">
+        <ul class="mobile-links">
+            <li><a href="#about">O mně</a></li>
+            <li><a href="#experience">Zkušenosti</a></li>
+            <li><a href="#posters-section">Projekty</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </div>
+    
 <section id="about" class="about">
     <div class="about-container">
         <img src="IMG/DSC_0438-scaled.jpg" alt="img">
@@ -54,45 +55,41 @@
         </div>
     </div>
 </section> 
-   <h2 class="section-title">Zkušenosti</h2>
+
 <section class="experience" id="experience">
-
-
-
+    <h2 class="section-title">Zkušenosti</h2>
     <div class="experience-info">
+        <div class="grid">
+            <div class="grid-card">
+                <i class="fa-solid fa-code"></i>
+                <span>Frontend development</span>
+                <h3>2 years</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="grid-card">
+                <i class="fa-solid fa-file-code"></i>
+                <span>Graphic Design</span>
+                <h3>4 years</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="grid-card">
+                <i class="fa-solid fa-laptop"></i>
+                <span>Editing videos</span>
+                <h3>3 years</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="grid-card">
+                <i class="fa-solid fa-list"></i>
+                <span>Backend development</span>
+                <h3>2 years</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <div class="grid">
-        <div class="grid-card">
 
-        <i class="fa-solid fa-code"></i>
-        <span>Frontend development</span>
-        <h3>2 years</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-             Perferendis eius ad, possimus nobis, praesentium nemo </p>
-    </div>
-    <div class="grid-card">
-        <i class="fa-solid fa-file-code"></i>
-        <span>Graphic Design</span>
-        <h3>4 years</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-             Perferendis eius ad, possimus nobis, praesentium nemo </p>
-    </div>
-    <div class="grid-card">
-        <i class="fa-solid fa-laptop"></i>
-        <span>Editing videos</span>
-        <h3>3 years</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-             Perferendis eius ad, possimus nobis, praesentium nemo </p>
-    </div>
-    <div class="grid-card">
-        <i class="fa-solid fa-list"></i>
-        <span>Backend development</span>
-        <h3>2 years</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-             Perferendis eius ad, possimus nobis, praesentium nemo </p>
-    </div>
-    </div>
-</div>    
+  
 <section class="posters-section" id="posters-section">
 
     <div class="poster" style="background-image: url('IMG/p1.jpg');"></div>
@@ -104,16 +101,16 @@
 
 <section class="contact-fullscreen" id="contact">
     <div class="contact-content">
-        <h2 class="contact-title">Kontaktujme se </h2>
+        <h2 class="contact-title">Kontaktujme se</h2>
         <p class="contact-description">
-            Pokud máte zájem o budoucí spolupráci tak mě kontaktujte zde...
+            Pokud máte zájem o budoucí spolupráci nebo zájem o to se dozvědět co více dokážu, tak mě kontaktujte zde...
         </p>
 
         <div class="contact-actions">
             <a href="mailto:lukned2005@gmail.com" class="contact-link">
-                <i class="fas fa-envelope"></i> Email 
+                <i class="fas fa-envelope"></i> Email
             </a>
-            <a href="https://github.com/lukasnedbal" target="_blank" class="contact-link">
+            <a href="https://github.com/NedbalLukas" target="_blank" class="contact-link">
                 <i class="fab fa-github"></i> GitHub
             </a>
         </div>
@@ -126,6 +123,7 @@
 </section>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
