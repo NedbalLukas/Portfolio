@@ -560,6 +560,8 @@ li a:hover::before {
     text-align: center;
     background: linear-gradient(135deg, #1a3c40, #1c5253);
     color: white;
+    position: relative;
+    z-index: 1000; 
 }
 
 .contact-title {
@@ -584,6 +586,39 @@ li a:hover::before {
     cursor: pointer;
 }
 
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-description {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .contact-link {
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
+
+    .contact-phone {
+        margin-top: 15px;
+    }
+
+    .phone-number {
+        font-size: 1.1rem;
+    }
+}
+
+.contact-phone {
+    margin-top: 20px;
+}
+
+.phone-number {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
 
 .contact-phone {
     margin-top: 20px;
