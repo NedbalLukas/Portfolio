@@ -638,8 +638,6 @@ body {
   }
   
   .project-item {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
