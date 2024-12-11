@@ -1,43 +1,18 @@
-const menuIcon = document.querySelector('#menu-icon');
-const navLinks = document.querySelector('.nav-links');
-menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
 document.addEventListener('DOMContentLoaded', () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ** Animace pro Úvodní obrazovku **
     const introScreen = document.getElementById('intro-screen');
-    const mainContent = document.getElementById('main-content');
     const greeting = document.getElementById('greeting');
-    const textSplit = greeting.textContent.split('');
-    greeting.textContent = '';
-    textSplit.forEach((char) => {
-        const span = document.createElement('span');
-        span.textContent = char;
-        span.style.display = 'inline-block';
-        greeting.appendChild(span);
-    });
     const timeline = gsap.timeline();
+    
     timeline.fromTo(
-        '#greeting span',
+        '#greeting', 
         { opacity: 0, y: 50 },
-        {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-            stagger: 0.1, 
-        }
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }
     );
-    timeline.to(
-        '#greeting',
-        {
-            textShadow: '0px 0px 15px rgba(255,255,255,0.7)',
-            duration: 0.5,
-            repeat: 1,
-            yoyo: true,
-            ease: "power1.inOut",
-        },
-        '-=0.5'
-    );
+
+    // Po animaci intro obrazovky
     timeline.to(introScreen, {
         opacity: 0,
         duration: 1.5,
@@ -45,109 +20,188 @@ document.addEventListener('DOMContentLoaded', () => {
         delay: 1,
         onComplete: () => {
             introScreen.style.display = 'none';
-            mainContent.style.display = 'block';
-            gsap.fromTo(
-                mainContent,
-                { opacity: 0, scale: 0.95, y: 30 },
-                {
-                    opacity: 1,
-                    scale: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                }
-            );
-            animateHeader();
-        },
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    gsap.registerPlugin(ScrollTrigger);
-    const posters = document.querySelectorAll('.poster');
-    posters.forEach((poster, index) => {
-        if (window.innerWidth >= 768) {
-            gsap.fromTo(
-                poster,
-                {
-                    x: index % 2 === 0 ? '100%' : '-100%',
-                    rotation: 30,
-                    opacity: 0,
-                },
-                {
-                    x: '0%',
-                    rotation: 0,
-                    opacity: 1,
-                    scale: 1,
-                    duration: 1.5,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: poster,
-                        start: 'top 80%',
-                        end: 'top 30%',
-                        scrub: true,
-                    },
-                }
-            );
-        } else {
-            gsap.fromTo(
-                poster,
-                {
-                    x: index % 2 === 0 ? '100%' : '-100%',
-                    opacity: 0,
-                },
-                {
-                    x: '0%',
-                    opacity: 1,
-                    scale: 1,
-                    duration: 1.5,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: poster,
-                        start: 'top 90%',
-                        end: 'top 30%',
-                        scrub: true,
-                    },
-                }
-            );
+            document.getElementById('main-content').style.display = 'block';
         }
     });
-});
-const menuicon = document.getElementById('menu-icon');
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileLinks = document.querySelectorAll('.mobile-links a');
-const header = document.querySelector('.header');
-const sections = document.querySelectorAll('section');
-let menuOpen = false;
-menuIcon.addEventListener('click', () => {
-    if (!menuOpen) {
-        openMenu();
-    } else {
-        closeMenu();
-    }
-});
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        closeMenu();
+
+    // ** Animace pro Karty v sekci "Zkušenosti" **
+    const experienceCards = document.querySelectorAll('.grid-card');
+    experienceCards.forEach(card => {
+        gsap.fromTo(
+            card, 
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    end: 'top 30%',
+                    scrub: true
+                }
+            }
+        );
+    });
+
+    // ** Animace pro Záhlaví (menu) **
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            gsap.to(link, { 
+                scale: 1.1,
+                duration: 0.4,
+                ease: "power2.out" 
+            });
+        });
+        link.addEventListener('mouseleave', () => {
+            gsap.to(link, { 
+                scale: 1, 
+                color: "#fff", // Zpět na původní barvu
+                duration: 0.4,
+                ease: "power2.out" 
+            });
+        });
+    });
+
+    // ** Animace pro Scrollování sekcí **
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        gsap.fromTo(
+            section, 
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    end: "top 30%",
+                    scrub: true
+                }
+            }
+        );
+    });
+
+    // ** Mobilní Menu Animace - Vylepšení **
+    const menuIcon = document.getElementById('menu-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-links a');
+    let menuOpen = false;
+
+    // Funkce pro otevření/zavření menu
+    menuIcon.addEventListener('click', () => {
+        if (!menuOpen) {
+            // Otevření menu s animací
+            gsap.to(mobileMenu, {
+                opacity: 1,
+                scale: 1.1, // Zvětšení menu pro lepší efekt
+                x: 0, // Posunutí na středu obrazovky
+                duration: 1.2,
+                ease: "power2.out",
+                display: "flex"
+            });
+
+            // Animace položek menu s opožděním pro lepší vizuální efekt
+            gsap.fromTo(
+                ".mobile-links li",
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" }
+            );
+
+            menuOpen = true;
+        } else {
+            // Zavření menu s animací
+            gsap.to(mobileMenu, {
+                opacity: 0,
+                scale: 0.9, // Zmenšení menu při zavření
+                x: '100%', // Posunutí mimo obrazovku
+                duration: 0.8,
+                ease: "power2.in",
+                display: "none"
+            });
+            menuOpen = false;
+        }
+    });
+
+    // Funkce pro kliknutí na sekci a zavření menu
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (menuOpen) {
+                gsap.to(mobileMenu, {
+                    opacity: 0,
+                    scale: 0.9, // Zmenšení při zavírání
+                    x: '100%',
+                    duration: 0.8,
+                    ease: "power2.in",
+                    display: "none"
+                });
+                menuOpen = false;
+            }
+        });
+    });
+
+    // ** Animace pro Kontakt sekci **
+    const contactContent = document.querySelector('#contact .contact-content');
+    gsap.fromTo(
+        contactContent, 
+        { opacity: 0, y: 50 },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: '#contact',
+                start: 'top 75%',
+                toggleActions: 'play none none none'
+            }
+        }
+    );
+
+    // ** Animace pro kontaktní odkazy **
+    const contactLinks = document.querySelectorAll("#contact .contact-link");
+    contactLinks.forEach((link, index) => {
+        gsap.fromTo(
+            link, 
+            { opacity: 0, x: -50 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                delay: index * 0.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: '#contact',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            }
+        );
+    });
+
+    // ** Animace pro obrázky v projektech **
+    const projectImages = document.querySelectorAll('.project-image');
+    projectImages.forEach((image, index) => {
+        gsap.fromTo(
+            image,
+            { opacity: 0, scale: 1.1 },
+            {
+                opacity: 1,
+                scale: 1,
+                duration: 1,
+                delay: index * 0.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: image,
+                    start: "top 80%",
+                    end: "top 60%",
+                    scrub: true
+                }
+            }
+        );
     });
 });
-sections.forEach(section => observer.observe(section));
-function openMenu() {
-    menuOpen = true;
-    mobileMenu.classList.add('open');
-    mobileMenu.style.display = 'flex';
-
-    menuIcon.classList.add('active');
-
-}
-function closeMenu() {
-    menuOpen = false;
-
-    mobileMenu.classList.add('closing');
-    setTimeout(() => {
-        mobileMenu.classList.remove('open', 'closing');
-        mobileMenu.style.display = 'none';
-    }, 300);
-
-    menuIcon.classList.remove('active');
-}
-
