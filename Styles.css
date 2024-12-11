@@ -581,6 +581,7 @@ li a:hover::before {
     color: white;
     text-decoration: none;
     transition: background 0.3s, color 0.3s;
+    cursor: pointer;
 }
 
 
